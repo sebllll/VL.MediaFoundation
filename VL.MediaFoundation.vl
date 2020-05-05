@@ -9,7 +9,7 @@
     ************************ VideoIn (Reactive) ************************
 
 -->
-        <Node Name="VideoIn (Reactive)" Bounds="520,215" Id="U48dokgTi7JPe13tUzN2A8">
+        <Node Name="VideoIn (Reactive)" Bounds="277,110" Id="U48dokgTi7JPe13tUzN2A8">
           <p:NodeReference>
             <Choice Kind="ContainerDefinition" Name="Process" />
             <FullNameCategoryReference ID="Primitive" />
@@ -147,7 +147,7 @@
     ************************ VideoCaptureDeviceEnumEntry ************************
 
 -->
-        <Node Name="VideoCaptureDeviceEnumEntry" Bounds="518,296" Id="OBmZgTdAvKoLagNKeTLBNs">
+        <Node Name="VideoCaptureDeviceEnumEntry" Bounds="277,167" Id="OBmZgTdAvKoLagNKeTLBNs">
           <p:NodeReference>
             <Choice Kind="ForwardDefinition" Name="Forward" />
             <FullNameCategoryReference ID="Primitive" />
@@ -194,7 +194,7 @@
     ************************ VideoPlayer (Reactive) ************************
 
 -->
-        <Node Name="VideoPlayer (Reactive)" Bounds="267,211" Id="KPnh313JnL7L8eh6Nn0Hw1">
+        <Node Name="VideoPlayer (Reactive)" Bounds="277,224" Id="KPnh313JnL7L8eh6Nn0Hw1">
           <p:NodeReference>
             <Choice Kind="ForwardDefinition" Name="Forward" />
             <FullNameCategoryReference ID="Primitive" />
@@ -361,7 +361,7 @@
     ************************ VideoPlayerTexture2D ************************
 
 -->
-        <Node Name="VideoPlayerTexture2D" Bounds="281,418" Id="DZ08UzVBVdJO1GMBA0FcEt">
+        <Node Name="VideoPlayerTexture2D" Bounds="277,281" Id="DZ08UzVBVdJO1GMBA0FcEt">
           <p:NodeReference>
             <Choice Kind="ForwardDefinition" Name="Forward" />
             <FullNameCategoryReference ID="Primitive" />
@@ -528,14 +528,14 @@
     ************************ Texture2DInfo ************************
 
 -->
-        <Node Name="Texture2DInfo" Bounds="606,547,80,80" Id="Qmv4FrUvAGsLIwQTFtlLQo">
+        <Node Name="Texture2DInfo" Bounds="600,504,118,80" Id="Qmv4FrUvAGsLIwQTFtlLQo">
           <p:NodeReference>
             <Choice Kind="OperationDefinition" Name="Operation" />
             <FullNameCategoryReference ID="Primitive" />
           </p:NodeReference>
           <p:HideCategory p:Type="Boolean">false</p:HideCategory>
           <Patch Id="BDpxdEyNu8QOT9efZgzvIS">
-            <Node Bounds="638,579,10,10" AutoConnect="true" Id="HPYYJOJoFmqME8gDO4pIFJ">
+            <Node Bounds="612,536,82,19" AutoConnect="true" Id="HPYYJOJoFmqME8gDO4pIFJ">
               <p:NodeReference LastCategoryFullName="VL.MediaFoundation.Utils" LastSymbolSource="VL.MediaFoundation.dll">
                 <Choice Kind="OperationNode" Name="Texture2DInfo" />
                 <FullNameCategoryReference ID="VL.MediaFoundation.Utils" />
@@ -552,14 +552,14 @@
     ************************ CopyInto ************************
 
 -->
-        <Node Name="CopyInto" Bounds="601,388,112,80" Id="RptkasyHGuoM20s3jDP3Ag">
+        <Node Name="CopyInto" Bounds="598,227,214,119" Id="RptkasyHGuoM20s3jDP3Ag">
           <p:NodeReference>
             <Choice Kind="OperationDefinition" Name="Operation" />
             <FullNameCategoryReference ID="Primitive" />
           </p:NodeReference>
           <p:HideCategory p:Type="Boolean">false</p:HideCategory>
           <Patch Id="IF62mg1muUcNb0DiOES8FE">
-            <Node Bounds="613,416,79,26" AutoConnect="true" Id="VioTRgHTVN5MTWwLsmUvMC">
+            <Node Bounds="610,300,139,26" AutoConnect="true" Id="VioTRgHTVN5MTWwLsmUvMC">
               <p:NodeReference LastCategoryFullName="VL.MediaFoundation.TextureExtension" LastSymbolSource="VL.MediaFoundation.dll">
                 <Choice Kind="OperationNode" Name="CopyInto" />
                 <FullNameCategoryReference ID="VL.MediaFoundation.TextureExtension" />
@@ -578,11 +578,50 @@
               <Pin Id="RtXmBQwJOx4MatsIoNcMtb" Name="D 3d Device" Kind="InputPin" />
               <Pin Id="VMLSFXOG2N9N1z5DJkNnVA" Name="Source" Kind="InputPin" />
             </Node>
-            <Pin Id="HXv34Kdyp2NLY1l0GVHYTO" Name="Input" Kind="InputPin" />
-            <Pin Id="IdPyW11UAXqNuEZ4zjMI1l" Name="D 3d Device" Kind="InputPin" />
-            <Pin Id="KUllLdZegvePxGGJfni57a" Name="Source" Kind="InputPin" />
+            <ControlPoint Id="EvX2DTUBzUGOyaiPcDpHs1" Bounds="612,245" />
+            <Link Id="H5v7l6GfnHRM6pc809cr8X" Ids="EvX2DTUBzUGOyaiPcDpHs1,PBW9QcL9tX3MOr162VVzDf" />
+            <Link Id="UPS1G72Fg5eMKWRXh3HfrQ" Ids="ExVup0gnbBWPgNjns74tLu,EvX2DTUBzUGOyaiPcDpHs1" IsHidden="true" />
+            <ControlPoint Id="V8gyH3YOB25MCyqy2YSPns" Bounds="679,245" />
+            <Link Id="LRLzkhktaXcLuWDcbRcSZg" Ids="V8gyH3YOB25MCyqy2YSPns,RtXmBQwJOx4MatsIoNcMtb" />
+            <Link Id="U67LIEpmyllLdwWRui9eW1" Ids="VFYPaM0mWq5MU5sMW3fakp,V8gyH3YOB25MCyqy2YSPns" IsHidden="true" />
+            <Pin Id="ExVup0gnbBWPgNjns74tLu" Name="Input" Kind="InputPin" Bounds="616,399">
+              <p:TypeAnnotation>
+                <Choice Kind="TypeFlag" Name="Texture" />
+              </p:TypeAnnotation>
+            </Pin>
+            <Pin Id="VFYPaM0mWq5MU5sMW3fakp" Name="D 3d Device" Kind="InputPin" Bounds="654,397">
+              <p:TypeAnnotation>
+                <Choice Kind="TypeFlag" Name="GraphicsDevice" />
+              </p:TypeAnnotation>
+            </Pin>
+            <ControlPoint Id="U6YHbe73RSxO7eHssArVXw" Bounds="758,245" />
+            <Link Id="Cn5Ng2vux2pMjNoEYElHAF" Ids="U6YHbe73RSxO7eHssArVXw,VMLSFXOG2N9N1z5DJkNnVA" />
+            <Pin Id="EdYe7qmLm2SNAcA23T16Vp" Name="Source" Kind="InputPin" Bounds="715,373">
+              <p:TypeAnnotation>
+                <Choice Kind="TypeFlag" Name="Resource" />
+              </p:TypeAnnotation>
+            </Pin>
+            <Link Id="MeZ5fpxCFATPZSLDlc22Hz" Ids="EdYe7qmLm2SNAcA23T16Vp,U6YHbe73RSxO7eHssArVXw" IsHidden="true" />
           </Patch>
         </Node>
+        <Pad Id="OWPVKnKBXdvNUt7oenjWq7" Bounds="836,207,293,233" ShowValueBox="true" isIOBox="true" Value="NOTE:&#xD;&#xA;this is done by referencing Xenko.graphics.dll by hand and the setting the types manually.&#xD;&#xA;&#xD;&#xA;when this patch runs in stride scope, that isn't needed as the types (Texture, Graphicsdevice) could be interfered automatically.&#xD;&#xA;&#xD;&#xA;so, this is just a reminder, that CopyInto() must be forwarded here.&#xD;&#xA;&#xD;&#xA;-&gt; to do this, just delete the input-pins">
+          <p:TypeAnnotation LastCategoryFullName="Primitive" LastSymbolSource="CoreLibBasics.vl">
+            <Choice Kind="TypeFlag" Name="String" />
+          </p:TypeAnnotation>
+          <p:ValueBoxSettings>
+            <p:fontsize p:Type="Int32">9</p:fontsize>
+            <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+          </p:ValueBoxSettings>
+        </Pad>
+        <Pad Id="PfyACu5sa1YLCvtr5wLLKI" Bounds="836,512,167,62" ShowValueBox="true" isIOBox="true" Value="this is just a small helper to check if a given Texture2D isn't null">
+          <p:TypeAnnotation>
+            <Choice Kind="TypeFlag" Name="String" />
+          </p:TypeAnnotation>
+          <p:ValueBoxSettings>
+            <p:fontsize p:Type="Int32">9</p:fontsize>
+            <p:stringtype p:Assembly="VL.Core" p:Type="VL.Core.StringType">Comment</p:stringtype>
+          </p:ValueBoxSettings>
+        </Pad>
       </Canvas>
       <!--
 
@@ -729,5 +768,9 @@
   <PlatformDependency Id="BGEGu4c1wcsPKai7Ct7s2I" Location="./src/bin/net472/VL.MediaFoundation.dll" />
   <NugetDependency Id="CIaIqv37RcIOugCory9kns" Location="SharpDX.MediaFoundation" Version="4.2.0" />
   <NugetDependency Id="U5feeIjoSz2MGN4Xo82u2R" Location="SharpDX.Direct3D11" Version="4.2.0" />
-  <NugetDependency Id="IrVdaY2fxEmLxkzclFN2bT" Location="Xenko.Graphics" Version="3.2.0.1-vvvv-0894" />
+  <NugetDependency Id="KiAc7CtciBWOWeom5DVMQf" Location="Xenko.Core" Version="3.2.0.1-vvvv-0894" />
+  <NugetDependency Id="LWfJTI5FTFbLeZOc6SCR9C" Location="Xenko" Version="3.2.0.1-vvvv-0894" />
+  <NugetDependency Id="SGCn3Vbp6WFPJOeSRBetq7" Location="Xenko.Graphics" Version="3.2.0.1-vvvv-0894" />
+  <NugetDependency Id="CpRb0w9zuDYOFRqbQ2Kypr" Location="Xenko.Native" Version="3.2.0.1-vvvv-0894" />
+  <PlatformDependency Id="VWnmt2OOkwsPl2Yu6Yye5w" Location="../../Users/seblh/AppData/Local/vvvv/gamma/nugets/Xenko.Graphics.3.2.0.1-vvvv-0894/runtimes/win/lib/netstandard2.0/Xenko.Graphics.dll" />
 </Document>
