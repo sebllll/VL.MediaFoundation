@@ -356,6 +356,233 @@
             </ProcessDefinition>
           </Patch>
         </Node>
+        <!--
+
+    ************************ VideoPlayerTexture2D ************************
+
+-->
+        <Node Name="VideoPlayerTexture2D" Bounds="281,418" Id="DZ08UzVBVdJO1GMBA0FcEt">
+          <p:NodeReference>
+            <Choice Kind="ForwardDefinition" Name="Forward" />
+            <FullNameCategoryReference ID="Primitive" />
+          </p:NodeReference>
+          <p:TypeAnnotation LastCategoryFullName="VL.MediaFoundation" LastSymbolSource="VL.MediaFoundation.dll">
+            <Choice Kind="TypeFlag" Name="VideoPlayerTexture2D" />
+          </p:TypeAnnotation>
+          <Patch Id="AEiIvCp0uZUMUZh1Rz7pvw">
+            <Canvas Id="CFLlWiyUHgsQTSf7jReVOp" CanvasType="Group">
+              <!--
+
+    ************************ Frames (Hidden) ************************
+
+-->
+              <Node Name="Frames (Hidden)" Bounds="399,498,119,80" Id="JoemOcOyvZzQJtFEjSvLpt">
+                <p:NodeReference>
+                  <Choice Kind="OperationDefinition" Name="Operation" />
+                  <FullNameCategoryReference ID="Primitive" />
+                </p:NodeReference>
+                <p:HideCategory p:Type="Boolean">false</p:HideCategory>
+                <Patch Id="E4I5NIQVqvkPdmFlco8wKj">
+                  <Node Bounds="411,527,95,26" AutoConnect="true" Id="VCA35S0ZOEaMuyEiSgxIvo">
+                    <p:NodeReference LastCategoryFullName="VL.MediaFoundation.VideoPlayerTexture2D" LastSymbolSource="VL.MediaFoundation.dll">
+                      <Choice Kind="OperationNode" Name="Frames" />
+                      <FullNameCategoryReference ID="VL.MediaFoundation.VideoPlayerTexture2D" />
+                    </p:NodeReference>
+                    <Pin Id="VsGiPwRjqkuOobwWYJCQlr" Name="Input" Kind="StateInputPin" />
+                    <Pin Id="JLlOroETdetN1bzDJ0IhKj" Name="Output" Kind="StateOutputPin" />
+                    <Pin Id="KXXP8sLHe3IQTRF8w0Tpgv" Name="Frames" Kind="OutputPin" />
+                  </Node>
+                  <Pin Id="Pe8D9iin5YsOzc0L4J339n" Name="Input" Kind="InputPin" />
+                  <Pin Id="UVoiP9Klxs9OkxHMi2MhNK" Name="Output" Kind="OutputPin" />
+                  <Pin Id="JVFQoFrsepwLfTHX56EE87" Name="Frames" Kind="OutputPin" />
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ CurrentTime (Hidden) ************************
+
+-->
+              <Node Name="CurrentTime (Hidden)" Bounds="399,652,119,80" Id="BeXPkhWMliQN7rggfke9ft">
+                <p:NodeReference>
+                  <Choice Kind="OperationDefinition" Name="Operation" />
+                  <FullNameCategoryReference ID="Primitive" />
+                </p:NodeReference>
+                <p:HideCategory p:Type="Boolean">false</p:HideCategory>
+                <Patch Id="SPurzs8QVIFOx1MbJodNOH">
+                  <Node Bounds="411,680,95,26" AutoConnect="true" Id="S8h6C0xmBWUMMaqKHdZa6W">
+                    <p:NodeReference LastCategoryFullName="VL.MediaFoundation.VideoPlayerTexture2D" LastSymbolSource="VL.MediaFoundation.dll">
+                      <Choice Kind="OperationNode" Name="CurrentTime" />
+                      <FullNameCategoryReference ID="VL.MediaFoundation.VideoPlayerTexture2D" />
+                    </p:NodeReference>
+                    <Pin Id="Jm3V2PuMTWFMa3cZEDFY4O" Name="Input" Kind="StateInputPin" />
+                    <Pin Id="AV95zOZIrcFP63E6XMRyPm" Name="Output" Kind="StateOutputPin" />
+                    <Pin Id="JI9ezhzXiCrMWqAK22CHnv" Name="Current Time" Kind="OutputPin" />
+                  </Node>
+                  <Pin Id="JgIs7GISpboLDVBH1TS0Xq" Name="Input" Kind="InputPin" />
+                  <Pin Id="Gjbd0w2vLDAMFdlS8lQrJA" Name="Output" Kind="OutputPin" />
+                  <Pin Id="Qiab89AqOjJQc36nB8NuF7" Name="Current Time" Kind="OutputPin" />
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ Duration (Hidden) ************************
+
+-->
+              <Node Name="Duration (Hidden)" Bounds="399,798,119,80" Id="JH8EMJc71XeNQwfqjUVXOd">
+                <p:NodeReference>
+                  <Choice Kind="OperationDefinition" Name="Operation" />
+                  <FullNameCategoryReference ID="Primitive" />
+                </p:NodeReference>
+                <p:HideCategory p:Type="Boolean">false</p:HideCategory>
+                <Patch Id="RYroJawA7WOMHO7OVONbek">
+                  <Node Bounds="411,826,95,26" AutoConnect="true" Id="CVQAOBUcfhPMAGHcobQmX3">
+                    <p:NodeReference LastCategoryFullName="VL.MediaFoundation.VideoPlayerTexture2D" LastSymbolSource="VL.MediaFoundation.dll">
+                      <Choice Kind="OperationNode" Name="Duration" />
+                      <FullNameCategoryReference ID="VL.MediaFoundation.VideoPlayerTexture2D" />
+                    </p:NodeReference>
+                    <Pin Id="BIo8paCGkwgOMMERJgseVn" Name="Input" Kind="StateInputPin" />
+                    <Pin Id="Ie4j0xzCsVAPOIckc8ksjO" Name="Output" Kind="StateOutputPin" />
+                    <Pin Id="OMPKnqORiYXMbLwc18j8Ng" Name="Duration" Kind="OutputPin" />
+                  </Node>
+                  <Pin Id="M5QgisfdjfwLKsEdHCs0RE" Name="Input" Kind="InputPin" />
+                  <Pin Id="Ls3Is53seHoLM0HQZI0WDq" Name="Output" Kind="OutputPin" />
+                  <Pin Id="JY45FvP11qfQHB5oSkIpmz" Name="Duration" Kind="OutputPin" />
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ Create ************************
+
+-->
+              <Node Name="Create" Bounds="399,222,119,80" Id="OGHVwiS9jJSLxkg62wPFie">
+                <p:NodeReference>
+                  <Choice Kind="OperationDefinition" Name="Operation" />
+                  <FullNameCategoryReference ID="Primitive" />
+                </p:NodeReference>
+                <p:HideCategory p:Type="Boolean">false</p:HideCategory>
+                <Patch Id="JAKIuM8HC8sNRWsI5ytyr6">
+                  <Node Bounds="411,251,95,26" AutoConnect="true" Id="OP2JntDSf8KQdaH5ViYt6M">
+                    <p:NodeReference LastCategoryFullName="VL.MediaFoundation.VideoPlayerTexture2D" LastSymbolSource="VL.MediaFoundation.dll">
+                      <Choice Kind="OperationNode" Name="Create" />
+                      <FullNameCategoryReference ID="VL.MediaFoundation.VideoPlayerTexture2D" />
+                    </p:NodeReference>
+                    <Pin Id="UHAcrJIccbQOmE1ZTWDF9E" Name="Output" Kind="StateOutputPin" />
+                  </Node>
+                  <Pin Id="IjWzyU4n44UO87yZc9Kn5C" Name="Output" Kind="OutputPin" />
+                </Patch>
+              </Node>
+              <!--
+
+    ************************ Update ************************
+
+-->
+              <Node Name="Update" Bounds="399,360,209,80" Id="Boucz98FtL4MjOgsIGAr9i">
+                <p:NodeReference>
+                  <Choice Kind="OperationDefinition" Name="Operation" />
+                  <FullNameCategoryReference ID="Primitive" />
+                </p:NodeReference>
+                <p:HideCategory p:Type="Boolean">false</p:HideCategory>
+                <Patch Id="MDO79MfHBZ3OOJKZv3VEr2">
+                  <Node Bounds="411,388,185,26" AutoConnect="true" Id="VVTbAdjmIywNL32t3YSLmU">
+                    <p:NodeReference LastCategoryFullName="VL.MediaFoundation.VideoPlayerTexture2D" LastSymbolSource="VL.MediaFoundation.dll">
+                      <Choice Kind="OperationNode" Name="Update" />
+                      <FullNameCategoryReference ID="VL.MediaFoundation.VideoPlayerTexture2D" />
+                    </p:NodeReference>
+                    <Pin Id="DTaRlTjwd0zMO8AfuEYCD0" Name="Input" Kind="StateInputPin" />
+                    <Pin Id="QD5RnBILca9QW6K0AG7bVK" Name="Url" Kind="InputPin" />
+                    <Pin Id="SQex12UQ4XSLDyuWbK1dWN" Name="Play" Kind="InputPin" />
+                    <Pin Id="UT9uHtdNIwBLhPgbi1Ux9Y" Name="Rate" Kind="InputPin" />
+                    <Pin Id="O3wZk6oNLX2Pem1eL3AynQ" Name="Seek Time" Kind="InputPin" />
+                    <Pin Id="NK4BtpJuHetMj8oGlsvab7" Name="Seek" Kind="InputPin" />
+                    <Pin Id="EYU6YDYOuktPwFQK0Uk6lf" Name="Loop Start Time" Kind="InputPin" />
+                    <Pin Id="ESquME1pRKIOVUuETzKXe4" Name="Loop End Time" Kind="InputPin" />
+                    <Pin Id="S4AZspmwRHPMFSME16wRbv" Name="Loop" Kind="InputPin" />
+                    <Pin Id="TK36neV9PjvPFQ15ZBobNY" Name="Volume" Kind="InputPin" />
+                    <Pin Id="IIzbqnl6N7tPjSyAteANXL" Name="Output" Kind="StateOutputPin" />
+                  </Node>
+                  <Pin Id="GL8Wg1VyAROPhiqkP17Yvw" Name="Input" Kind="InputPin" />
+                  <Pin Id="AxuvJOIxl0dP2pr39niL2I" Name="Url" Kind="InputPin" />
+                  <Pin Id="OJ6DBOblkmBLH4reY1Af3p" Name="Play" Kind="InputPin" />
+                  <Pin Id="JK3BzCJ23CJOXLJLknF9Fx" Name="Rate" Kind="InputPin" />
+                  <Pin Id="AWmHVyqFwz7PlHviNHNE7s" Name="Seek Time" Kind="InputPin" />
+                  <Pin Id="L9p3bj4MFqILtbAyobP86F" Name="Seek" Kind="InputPin" />
+                  <Pin Id="O5KTWnNBKh9PwvRHOtyAAp" Name="Loop Start Time" Kind="InputPin" />
+                  <Pin Id="E0giPfIB3AbNLCqhz3ptAa" Name="Loop End Time" Kind="InputPin" />
+                  <Pin Id="Qj5XlrxgCsgMTybNOdrUEu" Name="Loop" Kind="InputPin" />
+                  <Pin Id="U9ZkGnP34bCMQOVGzWpDvm" Name="Volume" Kind="InputPin" />
+                  <Pin Id="CDCgilfA9SsLMD88fXz4Wx" Name="Output" Kind="OutputPin" />
+                </Patch>
+              </Node>
+            </Canvas>
+            <ProcessDefinition Id="LtgNfRe1R4YOSG1uUSq2ta">
+              <Fragment Id="JFkwDtJrEL9Pq3LiqE99Uz" Patch="OGHVwiS9jJSLxkg62wPFie" Enabled="true" />
+              <Fragment Id="RJQ0BBUuyrsP7pVAyAVFTx" Patch="Boucz98FtL4MjOgsIGAr9i" Enabled="true" />
+              <Fragment Id="Txvfp8x08sBOQbw3B4rpH6" Patch="JoemOcOyvZzQJtFEjSvLpt" Enabled="true" />
+              <Fragment Id="CbINHxk6zk1OsUq2ofUdE7" Patch="BeXPkhWMliQN7rggfke9ft" Enabled="true" />
+              <Fragment Id="UTdbDykCf4QQUJaNVgeH09" Patch="JH8EMJc71XeNQwfqjUVXOd" Enabled="true" />
+            </ProcessDefinition>
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ Texture2DInfo ************************
+
+-->
+        <Node Name="Texture2DInfo" Bounds="606,547,80,80" Id="Qmv4FrUvAGsLIwQTFtlLQo">
+          <p:NodeReference>
+            <Choice Kind="OperationDefinition" Name="Operation" />
+            <FullNameCategoryReference ID="Primitive" />
+          </p:NodeReference>
+          <p:HideCategory p:Type="Boolean">false</p:HideCategory>
+          <Patch Id="BDpxdEyNu8QOT9efZgzvIS">
+            <Node Bounds="638,579,10,10" AutoConnect="true" Id="HPYYJOJoFmqME8gDO4pIFJ">
+              <p:NodeReference LastCategoryFullName="VL.MediaFoundation.Utils" LastSymbolSource="VL.MediaFoundation.dll">
+                <Choice Kind="OperationNode" Name="Texture2DInfo" />
+                <FullNameCategoryReference ID="VL.MediaFoundation.Utils" />
+              </p:NodeReference>
+              <Pin Id="EGVADOehxTZPhu6gL4ixSB" Name="Texture" Kind="InputPin" />
+              <Pin Id="GTzHjpkPYxpQWslHcRratB" Name="Result" Kind="OutputPin" />
+            </Node>
+            <Pin Id="Kac6D83uF5eMLwu9uLaExQ" Name="Texture" Kind="InputPin" />
+            <Pin Id="EspZBagQUtZMEoB9MWBYLF" Name="Result" Kind="OutputPin" />
+          </Patch>
+        </Node>
+        <!--
+
+    ************************ CopyInto ************************
+
+-->
+        <Node Name="CopyInto" Bounds="601,388,112,80" Id="RptkasyHGuoM20s3jDP3Ag">
+          <p:NodeReference>
+            <Choice Kind="OperationDefinition" Name="Operation" />
+            <FullNameCategoryReference ID="Primitive" />
+          </p:NodeReference>
+          <p:HideCategory p:Type="Boolean">false</p:HideCategory>
+          <Patch Id="IF62mg1muUcNb0DiOES8FE">
+            <Node Bounds="613,416,79,26" AutoConnect="true" Id="VioTRgHTVN5MTWwLsmUvMC">
+              <p:NodeReference LastCategoryFullName="VL.MediaFoundation.TextureExtension" LastSymbolSource="VL.MediaFoundation.dll">
+                <Choice Kind="OperationNode" Name="CopyInto" />
+                <FullNameCategoryReference ID="VL.MediaFoundation.TextureExtension" />
+                <PinReference Kind="InputPin" Name="Input">
+                  <p:DataTypeReference p:Type="TypeReference">
+                    <Choice Kind="TypeFlag" Name="No type" />
+                  </p:DataTypeReference>
+                </PinReference>
+                <PinReference Kind="InputPin" Name="D 3d Device">
+                  <p:DataTypeReference p:Type="TypeReference">
+                    <Choice Kind="TypeFlag" Name="No type" />
+                  </p:DataTypeReference>
+                </PinReference>
+              </p:NodeReference>
+              <Pin Id="PBW9QcL9tX3MOr162VVzDf" Name="Input" Kind="StateInputPin" />
+              <Pin Id="RtXmBQwJOx4MatsIoNcMtb" Name="D 3d Device" Kind="InputPin" />
+              <Pin Id="VMLSFXOG2N9N1z5DJkNnVA" Name="Source" Kind="InputPin" />
+            </Node>
+            <Pin Id="HXv34Kdyp2NLY1l0GVHYTO" Name="Input" Kind="InputPin" />
+            <Pin Id="IdPyW11UAXqNuEZ4zjMI1l" Name="D 3d Device" Kind="InputPin" />
+            <Pin Id="KUllLdZegvePxGGJfni57a" Name="Source" Kind="InputPin" />
+          </Patch>
+        </Node>
       </Canvas>
       <!--
 
@@ -502,4 +729,5 @@
   <PlatformDependency Id="BGEGu4c1wcsPKai7Ct7s2I" Location="./src/bin/net472/VL.MediaFoundation.dll" />
   <NugetDependency Id="CIaIqv37RcIOugCory9kns" Location="SharpDX.MediaFoundation" Version="4.2.0" />
   <NugetDependency Id="U5feeIjoSz2MGN4Xo82u2R" Location="SharpDX.Direct3D11" Version="4.2.0" />
+  <NugetDependency Id="IrVdaY2fxEmLxkzclFN2bT" Location="Xenko.Graphics" Version="3.2.0.1-vvvv-0894" />
 </Document>
