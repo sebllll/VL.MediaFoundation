@@ -20,7 +20,7 @@ namespace VL.MediaFoundation
     // Good source: https://stackoverflow.com/questions/40913196/how-to-properly-use-a-hardware-accelerated-media-foundation-source-reader-to-dec
     public partial class VideoPlayerTexture : IDisposable
     {
-        private readonly Subject<IImage> videoFrames = new Subject<IImage>();
+        private readonly Subject<Texture> videoFrames = new Subject<Texture>();
         private (Task, CancellationTokenSource) currentPlayback;
 
         public VideoPlayerTexture()
@@ -49,7 +49,7 @@ namespace VL.MediaFoundation
             Volume = volume;
         }
 
-        public IObservable<IImage> Frames => videoFrames;
+        public IObservable<Texture> Frames => videoFrames;
 
         public string Url
         {
@@ -99,17 +99,23 @@ namespace VL.MediaFoundation
             // Initialize MediaFoundation
             MediaManagerService.Initialize();
             // Hardware acceleration
-            GraphicsDevice d3dDevice = GraphicsDevice.New(Xenko.Graphics.DeviceCreationFlags.BgraSupport | Xenko.Graphics.DeviceCreationFlags.VideoSupport);
+            using var d3dDevice = new Device(DriverType.Hardware, SharpDX.Direct3D11.DeviceCreationFlags.BgraSupport | SharpDX.Direct3D11.DeviceCreationFlags.VideoSupport);
+            GraphicsDevice strideDevice = GraphicsDevice.New(Xenko.Graphics.DeviceCreationFlags.BgraSupport | Xenko.Graphics.DeviceCreationFlags.VideoSupport);
             // var d3dDevice = Services.GetService<IGame>().GraphicsDevice; // when in xenko context, one could use this
 
             // Add multi thread protection on device (MF is multi-threaded)
-            SharpDX.Direct3D11.Device nativeDevice = (SharpDX.Direct3D11.Device)typeof(SharpDX.Direct3D11.Device).GetProperty("NativeDevice", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(d3dDevice);
-            var deviceMultithread = nativeDevice.QueryInterface<DeviceMultithread>();
+            using var deviceMultithread = d3dDevice.QueryInterface<DeviceMultithread>();
             deviceMultithread.SetMultithreadProtected(true);
 
+            //SharpDX.Direct3D11.Device nativeDevice = (SharpDX.Direct3D11.Device)typeof(SharpDX.Direct3D11.Device).GetProperty("NativeDevice", BindingFlags.NonPublic | BindingFlags.Instance).GetValue(d3dDevice);
+            //var deviceMultithread = nativeDevice.QueryInterface<DeviceMultithread>();
+            //deviceMultithread.SetMultithreadProtected(true);
+
             // Reset device
+            //using var manager = new DXGIDeviceManager();
+            //manager.ResetDevice(nativeDevice);
             using var manager = new DXGIDeviceManager();
-            manager.ResetDevice(nativeDevice);
+            manager.ResetDevice(d3dDevice);
 
             using var classFactory = new MediaEngineClassFactory();
             using var mediaEngineAttributes = new MediaEngineAttributes()
@@ -128,22 +134,30 @@ namespace VL.MediaFoundation
             Duration = (float)engine.Duration;
 
             //var fac = new ImagingFactory();
-            //using var bitmap = new Bitmap(fac, width, height, SharpDX.WIC.PixelFormat.Format32bppBGRA, BitmapCreateCacheOption.CacheOnLoad);
-            var textureDesc = new TextureDescription()
+            var textureDesc = new Texture2DDescription()
             {
                 Width = width,
                 Height = height,
                 MipLevels = 0,
                 ArraySize = 1,
-                Format = Xenko.Graphics.PixelFormat.B8G8R8A8_UNorm,
-                MultisampleCount = MultisampleCount.None,
-                Usage = GraphicsResourceUsage.Staging, // Staging should include CpuAccessFlags.Read in xenko
-                Flags = TextureFlags.None,
-                Options = TextureOptions.None
+                Format = SharpDX.DXGI.Format.B8G8R8A8_UNorm,
+                SampleDescription = new SharpDX.DXGI.SampleDescription(1, 0),
+                Usage = ResourceUsage.Staging,
+                BindFlags = BindFlags.None,
+                CpuAccessFlags = CpuAccessFlags.Read,
+                OptionFlags = ResourceOptionFlags.None
             };
 
-            using var dstTexture = Texture.New2D(
-                d3dDevice,
+            using var dstTexture = new Texture2D(d3dDevice, textureDesc);
+
+            textureDesc.Usage = ResourceUsage.Default;
+            textureDesc.BindFlags = BindFlags.RenderTarget;
+            textureDesc.CpuAccessFlags = CpuAccessFlags.None;
+
+            using var renderTexture = new Texture2D(d3dDevice, textureDesc);
+
+            var strideTexture = Texture.New2D(
+                strideDevice,
                 width,
                 height,
                 Xenko.Graphics.PixelFormat.B8G8R8A8_UNorm,
@@ -152,18 +166,6 @@ namespace VL.MediaFoundation
                 GraphicsResourceUsage.Staging,
                 TextureOptions.None);
 
-            using var renderTexture = Texture.New2D(
-                d3dDevice,
-                width,
-                height,
-                Xenko.Graphics.PixelFormat.B8G8R8A8_UNorm,
-                TextureFlags.RenderTarget,
-                1,
-                GraphicsResourceUsage.Default,
-                TextureOptions.None);
-
-
-            //var info = new ImageInfo(width, height, PixelFormat.B8G8R8A8);
 
             while (!token.IsCancellationRequested)
             {
@@ -228,26 +230,26 @@ namespace VL.MediaFoundation
                         }
                     }
 
-                    //engine.TransferVideoFrame(bitmap, default, new SharpDX.Mathematics.Interop.RawRectangle(0, 0, width, height), default);
-                    //using var bitmapLock = bitmap.Lock(BitmapLockFlags.Read);
-                    //var data = bitmapLock.Data;
-                    //using var image = new IntPtrImage(data.DataPointer, data.Pitch * height, info);
-
                     engine.TransferVideoFrame(renderTexture, default, new SharpDX.Mathematics.Interop.RawRectangle(0, 0, width, height), default);
 
                     var deviceContext = d3dDevice.ImmediateContext;
                     deviceContext.CopyResource(renderTexture, dstTexture);
+
                     //deviceContext.Flush();
 
-                    var data = deviceContext.MapSubresource(dstTexture, 0, MapMode.Read, MapFlags.None);
                     try
                     {
-                        using var image = new IntPtrImage(data.DataPointer, data.RowPitch * height, info);
-                        videoFrames.OnNext(image);
+                        strideTexture.CopyInto(d3dDevice, dstTexture); // i now copy twice, but maybe ok for first test
+
+                        videoFrames.OnNext(strideTexture);
+                    }
+                    catch (Exception e)
+                    {
+                        throw new Exception(e.ToString());
                     }
                     finally
                     {
-                        deviceContext.UnmapSubresource(dstTexture, 0);
+                        // swap strideTexture here ... (doublebuffer needs to be implemented first)
                     }
                 }
             }
