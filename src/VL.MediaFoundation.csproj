@@ -25,8 +25,13 @@
     <PackageReleaseNotes>Popular nodes: VideoIn</PackageReleaseNotes>
     <PackageTags>VL;video;camera;vvvv</PackageTags>
     <PackageOutputPath>..\bin\</PackageOutputPath>
-    <Version>0.0.6</Version>
+    <Version>0.0.15</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>bin\VL.MediaFoundation.xml</DocumentationFile>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
@@ -36,7 +41,7 @@
     </PackageReference>
     <PackageReference Include="SharpDX.Direct3D11" Version="4.2.0" />
     <PackageReference Include="SharpDX.MediaFoundation" Version="4.2.0" />
-    <PackageReference Include="Xenko.Graphics" Version="3.1.0.1" />
+    <PackageReference Include="Xenko.Graphics" Version="3.2.0.1-vvvv-0896" />
   </ItemGroup>
 
   <ItemGroup>

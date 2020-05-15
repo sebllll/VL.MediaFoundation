@@ -14,13 +14,21 @@ using Xenko.Graphics;
 namespace VL.MediaFoundation
 {
     // Good source: https://stackoverflow.com/questions/40913196/how-to-properly-use-a-hardware-accelerated-media-foundation-source-reader-to-dec
-    public partial class VideoPlayerTexture2D : IDisposable
+    public partial class VideoPlayerTexture : IDisposable
     {
-        private readonly Subject<Texture2D> videoFrames = new Subject<Texture2D>();
+        private readonly Subject<Texture> videoFrames = new Subject<Texture>();
         private (Task, CancellationTokenSource) currentPlayback;
 
-        public VideoPlayerTexture2D()
+        private SharpDX.Direct3D11.Device d3dDevice;
+        private GraphicsDevice graphicsDevice;
+
+        public VideoPlayerTexture(GraphicsDevice graphicsdevice)
         {
+            graphicsDevice = graphicsdevice;
+            d3dDevice = (SharpDX.Direct3D11.Device)SharpDXInterop.GetNativeDevice(graphicsdevice);
+            
+            // TODO: check here if the flags are included
+            var flags = d3dDevice.CreationFlags;
         }
 
         public void Update(
@@ -45,7 +53,7 @@ namespace VL.MediaFoundation
             Volume = volume;
         }
 
-        public IObservable<Texture2D> Frames => videoFrames;
+        public IObservable<Texture> Frames => videoFrames;
 
         public string Url
         {
@@ -96,7 +104,9 @@ namespace VL.MediaFoundation
             MediaManagerService.Initialize();
 
             // Hardware acceleration
-            using var d3dDevice = new SharpDX.Direct3D11.Device(DriverType.Hardware, SharpDX.Direct3D11.DeviceCreationFlags.BgraSupport | SharpDX.Direct3D11.DeviceCreationFlags.VideoSupport);
+            //using var d3dDevice = new SharpDX.Direct3D11.Device(DriverType.Hardware, SharpDX.Direct3D11.DeviceCreationFlags.BgraSupport | SharpDX.Direct3D11.DeviceCreationFlags.VideoSupport);
+
+            // NOTE: the device being used in the constructor needs those flags to be enabled
 
             // Add multi thread protection on device (MF is multi-threaded)
             using var deviceMultithread = d3dDevice.QueryInterface<DeviceMultithread>();
@@ -122,7 +132,6 @@ namespace VL.MediaFoundation
             engine.GetNativeVideoSize(out var width, out var height);
             Duration = (float)engine.Duration;
 
-            //var fac = new ImagingFactory();
             var textureDesc = new Texture2DDescription()
             {
                 Width = width,
@@ -137,11 +146,7 @@ namespace VL.MediaFoundation
                 OptionFlags = ResourceOptionFlags.None
             };
 
-            var renderTarget = new Texture2D(d3dDevice, textureDesc);
-
-            textureDesc.BindFlags = BindFlags.None;
-            var renderTextureOut = new Texture2D(d3dDevice, textureDesc);
-
+            //var renderTexture = new Texture2D(d3dDevice, textureDesc);
 
             while (!token.IsCancellationRequested)
             {
@@ -205,25 +210,18 @@ namespace VL.MediaFoundation
                             continue;
                         }
                     }
+                    var renderTexture = new Texture2D(d3dDevice, textureDesc);
 
-                    engine.TransferVideoFrame(renderTarget, default, new SharpDX.Mathematics.Interop.RawRectangle(0, 0, width, height), default);
-
-                    //var deviceContext = d3dDevice.ImmediateContext;
-                    //deviceContext.Flush();
-                    var deviceContext = d3dDevice.ImmediateContext;
-                    deviceContext.CopyResource(renderTarget, renderTextureOut);
+                    engine.TransferVideoFrame(renderTexture, default, new SharpDX.Mathematics.Interop.RawRectangle(0, 0, width, height), default);
 
                     try
                     {
-                        //Utils.Swap(ref renderTarget, ref renderTextureOut);
-                        videoFrames.OnNext(renderTextureOut);
+                        videoFrames.OnNext(SharpDXInterop.CreateTextureFromNative(graphicsDevice, renderTexture, false));
                     }
                     catch (Exception e)
                     {
-
                         throw new Exception(e.ToString());
-                    }
-
+                    } 
                 }
             }
 
